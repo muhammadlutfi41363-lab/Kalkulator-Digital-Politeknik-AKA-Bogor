@@ -34,7 +34,7 @@ st.sidebar.caption("Politeknik AKA Bogor")
 if "riwayat" not in st.session_state:
     st.session_state.riwayat = []
 
-# ==================== TABEL PERIODIK (dari unsur.js) ====================
+# ==================== TABEL PERIODIK ====================
 unsur = {
     "H": {"nomor": 1, "massa": 1.008},
     "He": {"nomor": 2, "massa": 4.0026},
@@ -164,7 +164,7 @@ def tambah_riwayat(data):
 
 # ==================== MENU PEMBUATAN LARUTAN ====================
 if menu == "💧 Pembuatan Larutan":
-    st.markdown("## 💧 Pembuatan Larutan")
+    st.subheader("💧 Pembuatan Larutan")
     st.markdown("Menghitung **massa zat** yang dibutuhkan untuk membuat larutan dengan konsentrasi tertentu.")
     
     col1, col2 = st.columns(2)
@@ -193,7 +193,7 @@ if menu == "💧 Pembuatan Larutan":
 
 # ==================== MENU PENGENCERAN ====================
 elif menu == "🧪 Pengenceran":
-    st.markdown("## 🧪 Pengenceran Larutan")
+    st.subheader("🧪 Pengenceran Larutan")
     st.markdown("Menghitung **Volume Awal (V₁)** atau **Volume Akhir (V₂)** menggunakan rumus **M₁ × V₁ = M₂ × V₂**")
     
     tab1, tab2 = st.tabs(["📏 Hitung V₂ (Volume Akhir)", "📐 Hitung V₁ (Volume Awal)"])
@@ -236,7 +236,7 @@ elif menu == "🧪 Pengenceran":
 
 # ==================== MENU RIWAYAT ====================
 elif menu == "📁 Riwayat":
-    st.markdown("## 📁 Riwayat Perhitungan")
+    st.subheader("📁 Riwayat Perhitungan")
     
     if len(st.session_state.riwayat) == 0:
         st.info("Belum ada riwayat perhitungan. Silakan coba kalkulator terlebih dahulu!")
@@ -250,13 +250,11 @@ elif menu == "📁 Riwayat":
 
 # ==================== MENU TABEL PERIODIK ====================
 elif menu == "📊 Tabel Periodik":
-    st.markdown("## 📊 Tabel Periodik Unsur")
+    st.subheader("📊 Tabel Periodik Unsur")
     st.markdown("Klik unsur untuk melihat detail nomor atom dan massa atom.")
     
-    # Filter pencarian
     cari = st.text_input("🔍 Cari unsur (simbol)", placeholder="Contoh: H, O, Na, Cl")
     
-    # Tampilkan dalam grid
     cols = st.columns(6)
     col_idx = 0
     
@@ -269,8 +267,6 @@ elif menu == "📊 Tabel Periodik":
                 st.markdown(f"### {simbol}")
                 st.markdown(f"**Nomor Atom:** {data['nomor']}")
                 st.markdown(f"**Massa Atom:** {data['massa']} g/mol")
-                st.markdown("---")
-                st.caption("Jumlah proton = nomor atom")
         col_idx += 1
     
     if col_idx == 0 and cari:
