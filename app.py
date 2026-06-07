@@ -3,7 +3,7 @@ import streamlit as st
 # ==================== KONFIGURASI HALAMAN ====================
 st.set_page_config(
     page_title="Kalkulator Digital - Politeknik AKA Bogor",
-    page_icon="🧪",
+    page_icon="",
     layout="wide"
 )
 
