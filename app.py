@@ -178,7 +178,7 @@ if menu == "Pembuatan Larutan":
     
     col_btn1, col_btn2 = st.columns([3, 1])
     with col_btn1:
-        if st.button("🔬 Hitung Massa Zat", type="primary", use_container_width=True):
+        if st.button("Hitung Massa Zat", type="primary", use_container_width=True):
             if mr > 0 and volume > 0 and molaritas > 0:
                 massa = molaritas * (volume / 1000) * mr
                 hasil = f"Massa yang dibutuhkan: **{massa:.4f} gram**"
@@ -188,7 +188,7 @@ if menu == "Pembuatan Larutan":
                 st.error("Semua nilai harus diisi dan lebih dari 0!")
     
     with col_btn2:
-        if st.button("🗑️ Reset", use_container_width=True):
+        if st.button("Reset", use_container_width=True):
             st.rerun()
 
 # ==================== MENU PENGENCERAN ====================
@@ -244,7 +244,7 @@ elif menu == "Riwayat":
         for i, item in enumerate(st.session_state.riwayat):
             st.markdown(f"{i+1}. {item}")
     
-    if st.button("🗑️ Hapus Semua Riwayat", type="secondary"):
+    if st.button("Hapus Semua Riwayat", type="secondary"):
         st.session_state.riwayat = []
         st.rerun()
 
