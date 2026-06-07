@@ -10,7 +10,7 @@ st.set_page_config(
 # ==================== HEADER ====================
 st.markdown("""
     <div style="text-align: center; padding: 2rem; background: linear-gradient(90deg, #1d4ed8, #0f4c81); border-radius: 20px; margin-bottom: 2rem;">
-        <h1 style="color: white;">🧪 KALKULATOR DIGITAL</h1>
+        <h1 style="color: white;">KALKULATOR DIGITAL</h1>
         <p style="color: white; font-size: 18px;">Kalkulator Pembuatan & Pengenceran Larutan</p>
     </div>
 """, unsafe_allow_html=True)
@@ -18,13 +18,13 @@ st.markdown("""
 # ==================== SIDEBAR NAVIGASI ====================
 st.sidebar.markdown("""
     <div style="text-align: center; padding: 1rem;">
-        <h2>🧪 Menu</h2>
+        <h2>Menu</h2>
     </div>
 """, unsafe_allow_html=True)
 
 menu = st.sidebar.radio(
     "",
-    ["💧 Pembuatan Larutan", "🧪 Pengenceran", "📁 Riwayat", "📊 Tabel Periodik"]
+    ["Pembuatan Larutan", "Pengenceran", "Riwayat", "Tabel Periodik"]
 )
 
 st.sidebar.markdown("---")
@@ -163,8 +163,8 @@ def tambah_riwayat(data):
         st.session_state.riwayat.pop()
 
 # ==================== MENU PEMBUATAN LARUTAN ====================
-if menu == "💧 Pembuatan Larutan":
-    st.subheader("💧 Pembuatan Larutan")
+if menu == "Pembuatan Larutan":
+    st.subheader("Pembuatan Larutan")
     st.markdown("Menghitung **massa zat** yang dibutuhkan untuk membuat larutan dengan konsentrasi tertentu.")
     
     col1, col2 = st.columns(2)
@@ -192,8 +192,8 @@ if menu == "💧 Pembuatan Larutan":
             st.rerun()
 
 # ==================== MENU PENGENCERAN ====================
-elif menu == "🧪 Pengenceran":
-    st.subheader("🧪 Pengenceran Larutan")
+elif menu == "Pengenceran":
+    st.subheader("Pengenceran Larutan")
     st.markdown("Menghitung **Volume Awal (V₁)** atau **Volume Akhir (V₂)** menggunakan rumus **M₁ × V₁ = M₂ × V₂**")
     
     tab1, tab2 = st.tabs(["📏 Hitung V₂ (Volume Akhir)", "📐 Hitung V₁ (Volume Awal)"])
@@ -235,8 +235,8 @@ elif menu == "🧪 Pengenceran":
                 st.error("Semua nilai harus diisi dan lebih dari 0!")
 
 # ==================== MENU RIWAYAT ====================
-elif menu == "📁 Riwayat":
-    st.subheader("📁 Riwayat Perhitungan")
+elif menu == "Riwayat":
+    st.subheader("Riwayat Perhitungan")
     
     if len(st.session_state.riwayat) == 0:
         st.info("Belum ada riwayat perhitungan. Silakan coba kalkulator terlebih dahulu!")
@@ -249,8 +249,8 @@ elif menu == "📁 Riwayat":
         st.rerun()
 
 # ==================== MENU TABEL PERIODIK ====================
-elif menu == "📊 Tabel Periodik":
-    st.subheader("📊 Tabel Periodik Unsur")
+elif menu == "Tabel Periodik":
+    st.subheader("Tabel Periodik Unsur")
     st.markdown("Klik unsur untuk melihat detail nomor atom dan massa atom.")
     
     cari = st.text_input("🔍 Cari unsur (simbol)", placeholder="Contoh: H, O, Na, Cl")
