@@ -245,3 +245,53 @@ color: #60a5fa;
 margin: 15px 0 10px 0;
 font-size: 20px;
 }
+
+/* ============ PERBAIKAN ZOOM BERLEBIH ============ */
+
+/* Zoom dasar untuk desktop */
+html {
+    zoom: 85%;
+}
+
+/* Untuk laptop */
+@media (min-width: 1024px) and (max-width: 1366px) {
+    html {
+        zoom: 80%;
+    }
+}
+
+/* Untuk tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+    html {
+        zoom: 75%;
+    }
+}
+
+/* Untuk HP */
+@media (max-width: 767px) {
+    html {
+        zoom: 65%;
+    }
+    
+    .menu-tabs {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    
+    .menu-tabs button {
+        padding: 8px;
+        font-size: 12px;
+    }
+    
+    .tab-content {
+        padding: 12px;
+    }
+    
+    .unsur-box {
+        padding: 8px;
+    }
+    
+    .unsur-box h3 {
+        font-size: 14px;
+    }
+}
