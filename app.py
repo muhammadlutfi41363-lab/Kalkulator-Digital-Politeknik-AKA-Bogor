@@ -385,7 +385,8 @@ elif menu == "📊 Tabel Periodik":
     col_idx = 0
     
     for simbol, data in unsur.items():
-        if cari and cari.upper() != simbol and cari.upper() not in simbol:
+        # PERBAIKAN: pencarian sekarang mencakup semua unsur yang mengandung kata kunci
+        if cari and cari.upper() not in simbol:
             continue
         
         with cols[col_idx % 6]:
@@ -396,7 +397,7 @@ elif menu == "📊 Tabel Periodik":
         col_idx += 1
     
     if col_idx == 0 and cari:
-        st.warning(f"Tidak ditemukan unsur dengan simbol '{cari}'")
+        st.warning(f"Tidak ditemukan unsur dengan kata kunci '{cari}'")
 
 # ==================== FOOTER ====================
 st.markdown("""
