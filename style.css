@@ -1,297 +1,262 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-body{
-/* Background dengan gambar logo kampus + overlay gelap */
-background: linear-gradient(
-    rgba(15, 23, 42, 0.85),
-    rgba(15, 23, 42, 0.85)
-  ), url('logo-politeknik-aka-bogor.png');
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
-background-repeat: no-repeat;
-min-height: 100vh;
-color: white;
+body {
+    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('logo-politeknik-aka-bogor.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
 }
 
-/* Container dengan efek blur agar lebih mudah dibaca */
-.container{
-max-width:1100px;
-margin:auto;
-padding:20px;
-background: rgba(15, 23, 42, 0.5);
-backdrop-filter: blur(3px);
-border-radius: 20px;
+.container {
+    max-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(3px);
+    border-radius: 20px;
 }
 
-header{
-background: linear-gradient(90deg, #1d4ed8, #0f4c81);
-padding:30px;
-text-align:center;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);
-border-radius: 15px;
-margin-bottom: 20px;
+header {
+    background: linear-gradient(90deg, #1d4ed8, #0f4c81);
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 20px;
 }
 
-header h1{
-font-size:38px;
-font-weight:bold;
+header h1 {
+    font-size: 28px;
+    font-weight: bold;
 }
 
-header p{
-margin-top:10px;
-font-size:18px;
+header p {
+    margin-top: 10px;
+    font-size: 16px;
 }
 
-.menu-tabs{
-display:grid;
-grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
-gap:10px;
-margin-bottom:20px;
+.menu-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
 }
 
-.menu-tabs button{
-background:#111827;
-color:white;
-border:none;
-padding:15px;
-border-radius:12px;
-cursor:pointer;
-font-size:15px;
-font-weight:bold;
-transition:0.3s;
+.menu-tabs button {
+    background: #111827;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.menu-tabs button:hover{
-background:#2563eb;
-transform:translateY(-3px);
+.menu-tabs button:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
 }
 
-.tab-content{
-display:none;
-background: rgba(15, 23, 42, 0.9);
-padding:25px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-margin-bottom:20px;
-backdrop-filter: blur(2px);
+.tab-content {
+    display: none;
+    background: rgba(15, 23, 42, 0.9);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
 
-.tab-content.active{
-display:block;
+.tab-content.active {
+    display: block;
 }
 
-.tab-content h2{
-margin-bottom:15px;
-color:#60a5fa;
+.tab-content h2 {
+    margin-bottom: 15px;
+    color: #60a5fa;
+    font-size: 22px;
 }
 
-.tab-content p{
-margin-bottom:20px;
-line-height:1.5;
+.tab-content p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 14px;
 }
 
-label{
-display:block;
-margin-top:15px;
-margin-bottom:5px;
-font-size:16px;
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 
-input{
-width:100%;
-padding:15px;
-border:none;
-border-radius:10px;
-font-size:16px;
-background:#1f2937;
-color:white;
-outline:none;
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #1f2937;
+    color: white;
+    outline: none;
 }
 
-input:focus{
-border:2px solid #3b82f6;
+input:focus {
+    border: 2px solid #3b82f6;
 }
 
-.tab-content button{
-margin-top:20px;
-width:100%;
-padding:15px;
-font-size:18px;
-font-weight:bold;
-border:none;
-border-radius:12px;
-cursor:pointer;
-background:linear-gradient(90deg, #3b82f6, #2563eb);
-color:white;
-transition:0.3s;
+.tab-content button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    color: white;
+    transition: 0.3s;
 }
 
-.tab-content button:hover{
-transform:scale(1.02);
+.tab-content button:hover {
+    transform: scale(1.02);
 }
 
-.hasil{
-margin-top:20px;
-padding:20px;
-background:#111827;
-border-left:5px solid #3b82f6;
-border-radius:10px;
-font-size:18px;
-font-weight:bold;
-word-wrap:break-word;
-white-space:normal;
-overflow-x:auto;
+.hasil {
+    margin-top: 20px;
+    padding: 15px;
+    background: #111827;
+    border-left: 5px solid #3b82f6;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    word-wrap: break-word;
 }
 
-#listRiwayat{
-max-height:400px;
-overflow-y:auto;
+#listRiwayat {
+    max-height: 400px;
+    overflow-y: auto;
 }
 
-.riwayat-item{
-background:#111827;
-padding:15px;
-margin-top:10px;
-border-radius:10px;
-border-left:4px solid #3b82f6;
-word-wrap:break-word;
-white-space:normal;
-font-size:14px;
+.riwayat-item {
+    background: #111827;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-left: 4px solid #3b82f6;
+    font-size: 14px;
 }
 
-footer{
-text-align:center;
-padding:20px;
-background: rgba(17, 24, 39, 0.9);
-margin-top:20px;
-border-radius: 15px;
+footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(17, 24, 39, 0.9);
+    margin-top: 20px;
+    border-radius: 15px;
+    font-size: 12px;
 }
 
-@media(max-width:768px){
-header h1{
-font-size:28px;
-}
-.menu-tabs{
-grid-template-columns:1fr;
-}
-}
-
-#periodicTable{
-display:grid;
-grid-template-columns: repeat(auto-fill,minmax(90px,1fr));
-gap:10px;
-margin-top:20px;
+/* Tabel Periodik */
+#periodicTable {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 8px;
+    margin-top: 20px;
 }
 
-.unsur-box{
-background:#1e293b;
-padding:15px;
-border-radius:12px;
-text-align:center;
-cursor:pointer;
-transition:0.3s;
+.unsur-box {
+    background: #1e293b;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.unsur-box:hover{
-background:#2563eb;
-transform:scale(1.05);
+.unsur-box:hover {
+    background: #2563eb;
+    transform: scale(1.05);
 }
 
-.unsur-box h3{
-font-size:22px;
-margin-bottom:5px;
+.unsur-box h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
 .unsur-box p {
-font-size: 16px;
-font-weight: bold;
-margin: 5px 0;
-color: #60a5fa;
-line-height: 1.2;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #60a5fa;
 }
 
 .unsur-box small {
-font-size: 10px;
-display: block;
-margin-top: 5px;
-color: #94a3b8;
-}
-
-.btn-reset {
-background: #dc2626 !important;
-margin-top: 10px !important;
-}
-
-.btn-reset:hover {
-background: #b91c1c !important;
-transform: scale(1.02);
+    font-size: 9px;
+    display: block;
+    margin-top: 5px;
+    color: #94a3b8;
 }
 
 hr {
-margin: 20px 0;
-border: none;
-height: 1px;
-background: linear-gradient(90deg, #3b82f6, transparent);
+    margin: 15px 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, #3b82f6, transparent);
 }
 
 .tab-content h3 {
-color: #60a5fa;
-margin: 15px 0 10px 0;
-font-size: 20px;
+    color: #60a5fa;
+    margin: 10px 0;
+    font-size: 18px;
 }
 
-/* ============ PERBAIKAN ZOOM BERLEBIH ============ */
-
-/* Zoom dasar untuk desktop */
-html {
-    zoom: 85%;
-}
-
-/* Untuk laptop */
-@media (min-width: 1024px) and (max-width: 1366px) {
-    html {
-        zoom: 80%;
-    }
-}
-
-/* Untuk tablet */
-@media (min-width: 768px) and (max-width: 1023px) {
-    html {
-        zoom: 75%;
-    }
-}
-
-/* Untuk HP */
-@media (max-width: 767px) {
-    html {
-        zoom: 65%;
+/* Responsive untuk HP */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
     }
     
-    .menu-tabs {
-        grid-template-columns: 1fr;
-        gap: 5px;
+    header h1 {
+        font-size: 22px;
+    }
+    
+    header p {
+        font-size: 12px;
     }
     
     .menu-tabs button {
-        padding: 8px;
+        padding: 8px 12px;
         font-size: 12px;
     }
     
     .tab-content {
-        padding: 12px;
+        padding: 15px;
     }
     
-    .unsur-box {
-        padding: 8px;
+    .tab-content h2 {
+        font-size: 18px;
     }
     
     .unsur-box h3 {
-        font-size: 14px;
+        font-size: 12px;
+    }
+    
+    .unsur-box p {
+        font-size: 10px;
+    }
+    
+    button {
+        font-size: 14px !important;
     }
 }
