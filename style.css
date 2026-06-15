@@ -260,3 +260,11 @@ hr {
         font-size: 14px !important;
     }
 }
+
+/* Paksa zoom 100% */
+html {
+    zoom: 100% !important;
+    -moz-transform: scale(1) !important;
+    -webkit-transform: scale(1) !important;
+    transform: scale(1) !important;
+}
