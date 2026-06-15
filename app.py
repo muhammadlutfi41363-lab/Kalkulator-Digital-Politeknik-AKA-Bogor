@@ -381,12 +381,15 @@ elif menu == "📊 Tabel Periodik":
     
     cari = st.text_input("🔍 Cari unsur (simbol)", placeholder="Contoh: H, O, Na, Cl")
     
+    # Bersihkan input: hilangkan spasi, ubah ke huruf besar
+    cari_bersih = cari.strip().upper() if cari else ""
+    
     cols = st.columns(6)
     col_idx = 0
     
     for simbol, data in unsur.items():
-        # PERBAIKAN: pencarian sekarang mencakup semua unsur yang mengandung kata kunci
-        if cari and cari.upper() not in simbol:
+        # Cek apakah kata kunci cocok dengan simbol (case insensitive)
+        if cari_bersih and cari_bersih != simbol and cari_bersih not in simbol:
             continue
         
         with cols[col_idx % 6]:
@@ -396,8 +399,10 @@ elif menu == "📊 Tabel Periodik":
                 st.markdown(f"**Massa Atom:** {data['massa']} g/mol")
         col_idx += 1
     
-    if col_idx == 0 and cari:
+    # Jika tidak ada hasil
+    if col_idx == 0 and cari_bersih:
         st.warning(f"Tidak ditemukan unsur dengan kata kunci '{cari}'")
+        st.info("💡 Tips: Coba gunakan huruf kapital pertama, contoh: 'He', 'Na', 'Cl'")
 
 # ==================== FOOTER ====================
 st.markdown("""
