@@ -1,34 +1,160 @@
 import streamlit as st
+import base64
+from pathlib import Path
 
 # ==================== KONFIGURASI HALAMAN ====================
 st.set_page_config(
     page_title="Kalkulator Digital - Politeknik AKA Bogor",
-    page_icon="",
+    page_icon="🏫",
     layout="wide"
 )
 
-# ==================== HEADER ====================
+# ==================== FUNGSI UNTUK LOAD GAMBAR ====================
+def get_img_as_base64(file):
+    with open(file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# Coba load gambar logo (jika ada)
+try:
+    img_base64 = get_img_as_base64("logo-politeknik-aka-bogor.png")
+    logo_css = f"""
+    .stApp {{
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.85),
+            rgba(15, 23, 42, 0.85)
+        ), url('data:image/png;base64,{img_base64}');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }}
+    """
+except FileNotFoundError:
+    # Jika file logo tidak ditemukan, gunakan background polos
+    logo_css = """
+    .stApp {
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+    }
+    """
+
+# ==================== CUSTOM CSS ====================
+st.markdown(f"""
+    <style>
+    /* Background dengan gambar logo kampus */
+    {logo_css}
+    
+    /* Membuat konten utama lebih transparan */
+    .main > div {{
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 20px;
+        padding: 20px;
+        backdrop-filter: blur(3px);
+    }}
+    
+    /* Sidebar dengan efek transparan */
+    [data-testid="stSidebar"] {{
+        background: rgba(15, 23, 42, 0.85) !important;
+        backdrop-filter: blur(5px);
+    }}
+    
+    /* Card/metric styling */
+    [data-testid="stMetric"] {{
+        background-color: rgba(30, 41, 59, 0.8);
+        border-radius: 15px;
+        padding: 15px;
+    }}
+    
+    /* Tombol */
+    .stButton button {{
+        background: linear-gradient(90deg, #3b82f6, #2563eb);
+        color: white;
+        border-radius: 12px;
+        font-weight: bold;
+        transition: 0.3s;
+        width: 100%;
+    }}
+    
+    .stButton button:hover {{
+        transform: scale(1.02);
+        background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    }}
+    
+    /* Input number */
+    .stNumberInput input {{
+        background-color: #1f2937;
+        color: white;
+        border-radius: 10px;
+    }}
+    
+    /* Tab styling */
+    .stTabs [data-baseweb="tab-list"] {{
+        gap: 8px;
+    }}
+    
+    .stTabs [data-baseweb="tab"] {{
+        background-color: #1f2937;
+        border-radius: 10px;
+        padding: 10px 20px;
+        color: white;
+    }}
+    
+    .stTabs [aria-selected="true"] {{
+        background-color: #3b82f6;
+        color: white;
+    }}
+    
+    /* Info/success/error box */
+    .stAlert {{
+        background-color: rgba(17, 24, 39, 0.9);
+        border-radius: 10px;
+    }}
+    
+    /* Header styling */
+    .custom-header {{
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(90deg, #1d4ed8, #0f4c81);
+        border-radius: 20px;
+        margin-bottom: 2rem;
+    }}
+    
+    /* Footer */
+    .custom-footer {{
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+        color: #94a3b8;
+        font-size: 14px;
+    }}
+    </style>
+""", unsafe_allow_html=True)
+
+# ==================== HEADER DENGAN LOGO ====================
 st.markdown("""
-    <div style="text-align: center; padding: 2rem; background: linear-gradient(90deg, #1d4ed8, #0f4c81); border-radius: 20px; margin-bottom: 2rem;">
-        <h1 style="color: white;">KALKULATOR DIGITAL</h1>
-        <p style="color: white; font-size: 18px;">Kalkulator Pembuatan & Pengenceran Larutan</p>
+    <div class="custom-header">
+        <h1 style="color: white; margin: 0;">🏫 KALKULATOR DIGITAL</h1>
+        <p style="color: white; font-size: 18px; margin-top: 10px;">Kalkulator Pembuatan & Pengenceran Larutan</p>
+        <p style="color: #93c5fd; font-size: 14px; margin-top: 10px;">Politeknik AKA Bogor</p>
     </div>
 """, unsafe_allow_html=True)
 
 # ==================== SIDEBAR NAVIGASI ====================
 st.sidebar.markdown("""
     <div style="text-align: center; padding: 1rem;">
-        <h2>Menu</h2>
+        <h2 style="color: #60a5fa;">📋 Menu</h2>
     </div>
 """, unsafe_allow_html=True)
 
 menu = st.sidebar.radio(
     "",
-    ["Pembuatan Larutan", "Pengenceran", "Riwayat", "Tabel Periodik"]
+    ["💧 Pembuatan Larutan", "🧪 Pengenceran", "📁 Riwayat", "📊 Tabel Periodik"]
 )
 
 st.sidebar.markdown("---")
 st.sidebar.caption("Politeknik AKA Bogor")
+st.sidebar.caption("Program Studi Pengolahan Limbah Industri")
+st.sidebar.caption("© 2026 | Versi 2.0")
 
 # ==================== INISIALISASI SESSION STATE ====================
 if "riwayat" not in st.session_state:
@@ -163,8 +289,8 @@ def tambah_riwayat(data):
         st.session_state.riwayat.pop()
 
 # ==================== MENU PEMBUATAN LARUTAN ====================
-if menu == "Pembuatan Larutan":
-    st.subheader("Pembuatan Larutan")
+if menu == "💧 Pembuatan Larutan":
+    st.subheader("💧 Pembuatan Larutan")
     st.markdown("Menghitung **massa zat** yang dibutuhkan untuk membuat larutan dengan konsentrasi tertentu.")
     
     col1, col2 = st.columns(2)
@@ -178,7 +304,7 @@ if menu == "Pembuatan Larutan":
     
     col_btn1, col_btn2 = st.columns([3, 1])
     with col_btn1:
-        if st.button("Hitung Massa Zat", type="primary", use_container_width=True):
+        if st.button("🔬 Hitung Massa Zat", type="primary", use_container_width=True):
             if mr > 0 and volume > 0 and molaritas > 0:
                 massa = molaritas * (volume / 1000) * mr
                 hasil = f"Massa yang dibutuhkan: **{massa:.4f} gram**"
@@ -188,12 +314,12 @@ if menu == "Pembuatan Larutan":
                 st.error("Semua nilai harus diisi dan lebih dari 0!")
     
     with col_btn2:
-        if st.button("Reset", use_container_width=True):
+        if st.button("🗑️ Reset", use_container_width=True):
             st.rerun()
 
 # ==================== MENU PENGENCERAN ====================
-elif menu == "Pengenceran":
-    st.subheader("Pengenceran Larutan")
+elif menu == "🧪 Pengenceran":
+    st.subheader("🧪 Pengenceran Larutan")
     st.markdown("Menghitung **Volume Awal (V₁)** atau **Volume Akhir (V₂)** menggunakan rumus **M₁ × V₁ = M₂ × V₂**")
     
     tab1, tab2 = st.tabs(["📏 Hitung V₂ (Volume Akhir)", "📐 Hitung V₁ (Volume Awal)"])
@@ -235,8 +361,8 @@ elif menu == "Pengenceran":
                 st.error("Semua nilai harus diisi dan lebih dari 0!")
 
 # ==================== MENU RIWAYAT ====================
-elif menu == "Riwayat":
-    st.subheader("Riwayat Perhitungan")
+elif menu == "📁 Riwayat":
+    st.subheader("📁 Riwayat Perhitungan")
     
     if len(st.session_state.riwayat) == 0:
         st.info("Belum ada riwayat perhitungan. Silakan coba kalkulator terlebih dahulu!")
@@ -244,13 +370,13 @@ elif menu == "Riwayat":
         for i, item in enumerate(st.session_state.riwayat):
             st.markdown(f"{i+1}. {item}")
     
-    if st.button("Hapus Semua Riwayat", type="secondary"):
+    if st.button("🗑️ Hapus Semua Riwayat", type="secondary"):
         st.session_state.riwayat = []
         st.rerun()
 
 # ==================== MENU TABEL PERIODIK ====================
-elif menu == "Tabel Periodik":
-    st.subheader("Tabel Periodik Unsur")
+elif menu == "📊 Tabel Periodik":
+    st.subheader("📊 Tabel Periodik Unsur")
     st.markdown("Klik unsur untuk melihat detail nomor atom dan massa atom.")
     
     cari = st.text_input("🔍 Cari unsur (simbol)", placeholder="Contoh: H, O, Na, Cl")
@@ -273,5 +399,8 @@ elif menu == "Tabel Periodik":
         st.warning(f"Tidak ditemukan unsur dengan simbol '{cari}'")
 
 # ==================== FOOTER ====================
-st.markdown("---")
-st.markdown("<div style='text-align: center; padding: 1rem;'>Politeknik AKA Bogor</div>", unsafe_allow_html=True)
+st.markdown("""
+    <div class="custom-footer">
+        Politeknik AKA Bogor | Program Studi Pengolahan Limbah Industri
+    </div>
+""", unsafe_allow_html=True)
